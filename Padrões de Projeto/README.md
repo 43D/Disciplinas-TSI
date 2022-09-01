@@ -1,4 +1,4 @@
-# **Padrões de Projeto(2022)**
+# **Padrões de Projeto**
 
 Disciplina Padrões de Projeto
 

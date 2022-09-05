@@ -1,3 +1,3 @@
-# **Code Smell - Refatoração Básica**
+# **Gerador de sequência numérica - Injeção de dependência**
 
 descrição 

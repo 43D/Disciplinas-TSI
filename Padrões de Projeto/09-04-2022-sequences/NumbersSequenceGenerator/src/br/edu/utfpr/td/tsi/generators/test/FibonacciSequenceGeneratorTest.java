@@ -6,14 +6,14 @@ import br.edu.utfpr.td.tsi.generators.fibonacci.test.FibonacciSequenceGeneratorT
 
 public class FibonacciSequenceGeneratorTest {
 
-	public static void doTest() {
+	public void doTest() {
 		ISequenceGenerator generator = new FibonacciSequenceGenerator();
 		ISequenceGeneratorTester tester = new FibonacciSequenceGeneratorTester(generator);
 		tester.test();
 	}
 	
 	public static void main(String[] args) {
-		doTest();
+		new FibonacciSequenceGeneratorTest().doTest();
 	}
 
 }

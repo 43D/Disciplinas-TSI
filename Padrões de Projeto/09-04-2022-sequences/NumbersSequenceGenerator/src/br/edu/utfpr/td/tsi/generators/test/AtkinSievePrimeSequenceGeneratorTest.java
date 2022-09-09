@@ -6,14 +6,14 @@ import br.edu.utfpr.td.tsi.generators.prime.test.PrimeSequenceGeneratorTester;
 
 public class AtkinSievePrimeSequenceGeneratorTest {
 
-	public static void doTest() {
+	public void doTest() {
 		ISequenceGenerator generator = new AtkinSievePrimeSequenceGenerator();
 		ISequenceGeneratorTester tester = new PrimeSequenceGeneratorTester(generator);
 		tester.test();
 	}
 	
 	public static void main(String[] args) {
-		doTest();
+		new AtkinSievePrimeSequenceGeneratorTest().doTest();
 	}
 
 }

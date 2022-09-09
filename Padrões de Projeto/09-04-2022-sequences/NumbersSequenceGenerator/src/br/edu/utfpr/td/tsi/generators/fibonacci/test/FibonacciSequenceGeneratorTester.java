@@ -37,7 +37,7 @@ public class FibonacciSequenceGeneratorTester  extends AbstractSequenceGenerator
 	
 	private void testGetOne(){
 		List<Integer> primeSequence = getSequenceOf(1);
-		int[] expectedResult = {1};
+		int[] expectedResult = {1,1};
 		
 		if (!isMatches(primeSequence, expectedResult)) {
         	System.out.println("Erro - A lista errada: " + primeSequence.toString());
@@ -45,7 +45,7 @@ public class FibonacciSequenceGeneratorTester  extends AbstractSequenceGenerator
 	}
 	private void testGetTwenty(){
 		List<Integer> primeSequence = getSequenceOf(20);
-		int[] expectedResult = { 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765 };
+		int[] expectedResult = { 1, 1, 2, 3, 5, 8, 13 };
 		
 		if (!isMatches(primeSequence, expectedResult)) {
         	System.out.println("Erro - A lista errada: " + primeSequence.toString());

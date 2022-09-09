@@ -30,21 +30,39 @@ public class FibonacciSequenceGenerator extends AbstractSequenceGenerator{
 	
 	private void createSequenceOf(final int MAX) {
 		for(int i=0; i<MAX; i++) {
+			nextNumber();
+
+			if (isLimitOf(MAX))
+				break;
+	
 			addNextNumber();
 			
-			if (i == 0)
+			if (isZero(i))
 				continue;
 			
 			registrerAccountant();
+			
+			
 		}
 	}
-	private void addNextNumber() {
+	private boolean isLimitOf(final int MAX) {
+		return next >= MAX ? true : false;
+	}
+
+	private void nextNumber() {
 		next = current + previous;
+	}
+	
+	private void addNextNumber() {
 		generateSequence.add(next);
 	}
+	
 	private void registrerAccountant() {
 		previous = current;
 		current = next;
+	}
+	private boolean isZero (final int NUMBER) {
+		return NUMBER == 0 ? true : false;
 	}
 	
 }

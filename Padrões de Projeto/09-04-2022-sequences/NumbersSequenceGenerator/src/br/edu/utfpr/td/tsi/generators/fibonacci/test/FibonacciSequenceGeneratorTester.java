@@ -1,13 +1,13 @@
-package br.edu.utfpr.td.tsi.generators.test.tester.odd;
+package br.edu.utfpr.td.tsi.generators.fibonacci.test;
 
 import java.util.List;
 
 import br.edu.utfpr.td.tsi.generators.ISequenceGenerator;
-import br.edu.utfpr.td.tsi.generators.test.tester.SequenceGeneratorTester;
+import br.edu.utfpr.td.tsi.generators.test.AbstractSequenceGeneratorTester;
 
-public class OddSequenceGeneratorTester extends SequenceGeneratorTester{
+public class FibonacciSequenceGeneratorTester  extends AbstractSequenceGeneratorTester{
 
-	public OddSequenceGeneratorTester(ISequenceGenerator generator) {
+	public FibonacciSequenceGeneratorTester(ISequenceGenerator generator) {
 		super(generator);
 	}
 
@@ -23,14 +23,15 @@ public class OddSequenceGeneratorTester extends SequenceGeneratorTester{
 	private void testGetNegative(){
 		List<Integer> primeSequence = getSequenceOf(-2);
 		if (primeSequence.size() != 0) {
-        	System.out.println("Erro - A lista não está vazia: " + primeSequence.size());
+        	System.out.println("Erro - A lista nï¿½o estï¿½ vazia: " + primeSequence.size());
         }
 	}
 	
 	private void testGetZero(){
 		List<Integer> primeSequence = getSequenceOf(0);
+		
 		if (primeSequence.size() != 0) {
-        	System.out.println("Erro - A lista não está vazia: " + primeSequence.size());
+        	System.out.println("Erro - A lista nï¿½o estï¿½ vazia: " + primeSequence.size());
         }
 	}
 	
@@ -44,11 +45,10 @@ public class OddSequenceGeneratorTester extends SequenceGeneratorTester{
 	}
 	private void testGetTwenty(){
 		List<Integer> primeSequence = getSequenceOf(20);
-		int[] expectedResult = {1,3,5,7,9,11,13,15,17,19};
+		int[] expectedResult = { 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765 };
 		
 		if (!isMatches(primeSequence, expectedResult)) {
         	System.out.println("Erro - A lista errada: " + primeSequence.toString());
         }
 	}
-
 }

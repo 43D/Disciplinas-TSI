@@ -1,13 +1,14 @@
-package br.edu.utfpr.td.tsi.generators.test.tester.fibonacci;
+package br.edu.utfpr.td.tsi.generators.prime.test;
 
 import java.util.List;
 
 import br.edu.utfpr.td.tsi.generators.ISequenceGenerator;
-import br.edu.utfpr.td.tsi.generators.test.tester.SequenceGeneratorTester;
+import br.edu.utfpr.td.tsi.generators.test.AbstractSequenceGeneratorTester;
 
-public class FibonacciSequenceGeneratorTester  extends SequenceGeneratorTester{
+public class PrimeSequenceGeneratorTester  extends AbstractSequenceGeneratorTester{
 
-	public FibonacciSequenceGeneratorTester(ISequenceGenerator generator) {
+	
+	public PrimeSequenceGeneratorTester(ISequenceGenerator generator) {
 		super(generator);
 	}
 
@@ -16,6 +17,7 @@ public class FibonacciSequenceGeneratorTester  extends SequenceGeneratorTester{
 		testGetNegative();
 		testGetZero();
 		testGetOne();
+		testGetTwo();
 		testGetTwenty();
 		destroy();
 	}
@@ -23,32 +25,40 @@ public class FibonacciSequenceGeneratorTester  extends SequenceGeneratorTester{
 	private void testGetNegative(){
 		List<Integer> primeSequence = getSequenceOf(-2);
 		if (primeSequence.size() != 0) {
-        	System.out.println("Erro - A lista não está vazia: " + primeSequence.size());
+        	System.out.println("Erro - A lista nï¿½o estï¿½ vazia: " + primeSequence.size());
         }
 	}
 	
 	private void testGetZero(){
 		List<Integer> primeSequence = getSequenceOf(0);
-		
 		if (primeSequence.size() != 0) {
-        	System.out.println("Erro - A lista não está vazia: " + primeSequence.size());
+        	System.out.println("Erro - A lista nï¿½o estï¿½ vazia: " + primeSequence.size());
         }
 	}
 	
 	private void testGetOne(){
 		List<Integer> primeSequence = getSequenceOf(1);
-		int[] expectedResult = {1};
+		if (primeSequence.size() != 0) {
+        	System.out.println("Erro - A lista nï¿½o estï¿½ vazia: " + primeSequence.size());
+        }
+	}
+	
+	private void testGetTwo(){
+		List<Integer> primeSequence = getSequenceOf(1);
+		int[] expectedResult = {2};
 		
 		if (!isMatches(primeSequence, expectedResult)) {
         	System.out.println("Erro - A lista errada: " + primeSequence.toString());
         }
 	}
+	
 	private void testGetTwenty(){
 		List<Integer> primeSequence = getSequenceOf(20);
-		int[] expectedResult = { 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765 };
+		int[] expectedResult = { 2, 3, 5, 7, 11 , 13,17, 19 };
 		
 		if (!isMatches(primeSequence, expectedResult)) {
         	System.out.println("Erro - A lista errada: " + primeSequence.toString());
         }
 	}
+
 }

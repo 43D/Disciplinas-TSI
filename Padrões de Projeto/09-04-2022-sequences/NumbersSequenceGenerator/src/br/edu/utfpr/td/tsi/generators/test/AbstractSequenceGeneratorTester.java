@@ -1,14 +1,14 @@
-package br.edu.utfpr.td.tsi.generators.test.tester;
+package br.edu.utfpr.td.tsi.generators.test;
 
 import java.util.List;
 
 import br.edu.utfpr.td.tsi.generators.ISequenceGenerator;
 
-public abstract class SequenceGeneratorTester implements ISequenceGeneratorTester {
+public abstract class AbstractSequenceGeneratorTester implements ISequenceGeneratorTester {
 
 	protected final ISequenceGenerator generator;
 	
-	public SequenceGeneratorTester(ISequenceGenerator generator) {
+	public AbstractSequenceGeneratorTester(ISequenceGenerator generator) {
 		this.generator = generator;
 	}
 	

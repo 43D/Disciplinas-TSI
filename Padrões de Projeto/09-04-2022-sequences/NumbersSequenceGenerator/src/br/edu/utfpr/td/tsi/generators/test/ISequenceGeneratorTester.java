@@ -1,4 +1,4 @@
-package br.edu.utfpr.td.tsi.generators.test.tester;
+package br.edu.utfpr.td.tsi.generators.test;
 
 public interface ISequenceGeneratorTester {
 

@@ -2,8 +2,7 @@ package br.edu.utfpr.td.tsi.generators.test;
 
 import br.edu.utfpr.td.tsi.generators.ISequenceGenerator;
 import br.edu.utfpr.td.tsi.generators.fibonacci.FibonacciSequenceGenerator;
-import br.edu.utfpr.td.tsi.generators.test.tester.ISequenceGeneratorTester;
-import br.edu.utfpr.td.tsi.generators.test.tester.fibonacci.FibonacciSequenceGeneratorTester;
+import br.edu.utfpr.td.tsi.generators.fibonacci.test.FibonacciSequenceGeneratorTester;
 
 public class FibonacciSequenceGeneratorTest {
 

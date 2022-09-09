@@ -2,8 +2,7 @@ package br.edu.utfpr.td.tsi.generators.test;
 
 import br.edu.utfpr.td.tsi.generators.ISequenceGenerator;
 import br.edu.utfpr.td.tsi.generators.prime.erastotenes.EratosthenesPrimeSequenceGenerator;
-import br.edu.utfpr.td.tsi.generators.test.tester.ISequenceGeneratorTester;
-import br.edu.utfpr.td.tsi.generators.test.tester.prime.PrimeSequenceGeneratorTester;
+import br.edu.utfpr.td.tsi.generators.prime.test.PrimeSequenceGeneratorTester;
 
 public class EratosthenesPrimeSequenceGeneratorTest {
 	

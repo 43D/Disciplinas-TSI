@@ -2,8 +2,7 @@ package br.edu.utfpr.td.tsi.generators.test;
 
 import br.edu.utfpr.td.tsi.generators.ISequenceGenerator;
 import br.edu.utfpr.td.tsi.generators.odd.OddSequenceGenerator;
-import br.edu.utfpr.td.tsi.generators.test.tester.ISequenceGeneratorTester;
-import br.edu.utfpr.td.tsi.generators.test.tester.odd.OddSequenceGeneratorTester;
+import br.edu.utfpr.td.tsi.generators.odd.test.OddSequenceGeneratorTester;
 
 public class OddSequenceGeneratorTest {
 	public static void doTest() {

@@ -39,7 +39,9 @@ public class FibonacciSequenceGeneratorTester  extends AbstractSequenceGenerator
 		List<Integer> primeSequence = getSequenceOf(1);
 		int[] expectedResult = {1,1};
 		
-		if (!isMatches(primeSequence, expectedResult)) {
+		if (primeSequence.size() != 2) {
+        	System.out.println("Erro - A lista não tem tamanho certo (2): " + primeSequence.size());
+        }else if (!isMatches(primeSequence, expectedResult)) {
         	System.out.println("Erro - A lista errada: " + primeSequence.toString());
         }
 	}
@@ -47,7 +49,9 @@ public class FibonacciSequenceGeneratorTester  extends AbstractSequenceGenerator
 		List<Integer> primeSequence = getSequenceOf(20);
 		int[] expectedResult = { 1, 1, 2, 3, 5, 8, 13 };
 		
-		if (!isMatches(primeSequence, expectedResult)) {
+		if (primeSequence.size() != 7) {
+        	System.out.println("Erro - A lista não tem tamanho certo (7): " + primeSequence.size() + " l: " + primeSequence.toString());
+        }else if (!isMatches(primeSequence, expectedResult)) {
         	System.out.println("Erro - A lista errada: " + primeSequence.toString());
         }
 	}

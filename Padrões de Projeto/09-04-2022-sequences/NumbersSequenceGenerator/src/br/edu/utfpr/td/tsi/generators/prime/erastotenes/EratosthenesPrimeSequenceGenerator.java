@@ -1,4 +1,4 @@
-package br.edu.utfpr.td.tsi.generators.erastotenes;
+package br.edu.utfpr.td.tsi.generators.prime.erastotenes;
 
 import java.util.ArrayList;
 import java.util.List;

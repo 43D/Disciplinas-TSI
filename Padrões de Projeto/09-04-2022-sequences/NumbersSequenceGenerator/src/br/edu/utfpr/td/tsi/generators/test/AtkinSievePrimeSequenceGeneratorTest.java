@@ -1,7 +1,7 @@
 package br.edu.utfpr.td.tsi.generators.test;
 
 import br.edu.utfpr.td.tsi.generators.ISequenceGenerator;
-import br.edu.utfpr.td.tsi.generators.sieve.AtkinSievePrimeSequenceGenerator;
+import br.edu.utfpr.td.tsi.generators.prime.aktin.AtkinSievePrimeSequenceGenerator;
 import br.edu.utfpr.td.tsi.generators.test.tester.ISequenceGeneratorTester;
 import br.edu.utfpr.td.tsi.generators.test.tester.prime.PrimeSequenceGeneratorTester;
 

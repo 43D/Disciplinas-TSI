@@ -1,4 +1,4 @@
-package br.edu.utfpr.td.tsi.generators.sieve;
+package br.edu.utfpr.td.tsi.generators.prime.aktin;
 
 
 import java.util.ArrayList;

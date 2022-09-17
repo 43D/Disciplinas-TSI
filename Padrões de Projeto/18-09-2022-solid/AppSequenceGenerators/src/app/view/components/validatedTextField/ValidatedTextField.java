@@ -1,6 +1,9 @@
 package app.view.components.validatedTextField;
 
 import java.awt.Color;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JTextField;
 
@@ -8,6 +11,13 @@ public class ValidatedTextField extends JTextField{
 
 	private final static long serialVersionUID = 1L;
 	private IValidator validator;
+	
+	private final KeyListener keyListener = new KeyAdapter() {
+		@Override
+		public void keyReleased(KeyEvent keyEvent) {
+			decorate();
+		}
+	};
 	
 	public ValidatedTextField() {
 		super.addKeyListener(this.keyListener);

@@ -8,6 +8,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,6 +19,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 
+import app.view.components.scrollableOptionList.ScrollableOptionListBuilder;
 import app.view.components.validatedTextField.ValidatedTextField;
 import app.view.components.validators.IntegerRangeValidator;
 
@@ -44,6 +46,17 @@ public class ApplicationView {
 			sequenceTextArea.append(String.format("%d, ", value));
 
 		sequenceTextArea.append(" ...");
+	}
+	
+	public void setSequenceGeneratorsOptionList(List<Map.Entry<String, String>> sequenceOptionsList) {
+		if (sequenceOptionsList == null)
+			throw new NullPointerException("Parâmento 'sequenceOptionsList' não pode ser nulo");
+
+		ScrollableOptionListBuilder builder = new ScrollableOptionListBuilder()
+				.optionList(sequenceOptionsList)
+				.actionListener((actionEvent) -> sequenceName = actionEvent.getActionCommand());
+
+		frame.getContentPane().add(builder.build(), BorderLayout.WEST);
 	}
 
 	static public ApplicationView create() {

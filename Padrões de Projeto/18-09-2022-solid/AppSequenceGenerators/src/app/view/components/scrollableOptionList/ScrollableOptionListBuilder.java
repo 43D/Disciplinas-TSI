@@ -3,6 +3,7 @@ package app.view.components.scrollableOptionList;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.swing.ButtonGroup;

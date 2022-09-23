@@ -47,16 +47,17 @@ public class ApplicationView {
 
 		sequenceTextArea.append(" ...");
 	}
-	
-	public void setSequenceGeneratorsOptionList(List<Map.Entry<String, String>> sequenceOptionsList) {
+
+	static JScrollPane createSequenceOptionList(ApplicationView appView,
+			List<Map.Entry<String, String>> sequenceOptionsList) {
 		if (sequenceOptionsList == null)
 			throw new NullPointerException("Parâmento 'sequenceOptionsList' não pode ser nulo");
 
 		ScrollableOptionListBuilder builder = new ScrollableOptionListBuilder()
 				.optionList(sequenceOptionsList)
-				.actionListener((actionEvent) -> sequenceName = actionEvent.getActionCommand());
+				.actionListener((actionEvent) -> appView.sequenceName = actionEvent.getActionCommand());
 
-		frame.getContentPane().add(builder.build(), BorderLayout.WEST);
+		return builder.build();
 	}
 
 	static public ApplicationView create() {

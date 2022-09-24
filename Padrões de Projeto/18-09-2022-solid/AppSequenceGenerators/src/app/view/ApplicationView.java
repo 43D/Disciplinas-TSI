@@ -9,6 +9,7 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -59,8 +60,8 @@ public class ApplicationView {
 
 		return builder.build();
 	}
-
-	static public ApplicationView create() {
+	
+	static public ApplicationView create(List<Entry<String, String>> optionslist) {
 		final ApplicationView appView = new ApplicationView();
 
 		appView.sequenceTextArea = createSequenceTextArea();
@@ -70,6 +71,9 @@ public class ApplicationView {
 		appView.generateSequenceButton = new JButton("Gerar a sequ�ncia");
 
 		appView.frame = createFrame(appView);
+		
+		JScrollPane pane = createSequenceOptionList(appView, optionslist);
+		appView.frame.getContentPane().add(pane, BorderLayout.WEST);
 
 		return appView;
 	}

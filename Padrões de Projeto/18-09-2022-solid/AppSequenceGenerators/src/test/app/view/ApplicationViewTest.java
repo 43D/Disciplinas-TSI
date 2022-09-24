@@ -10,8 +10,6 @@ import app.view.ApplicationView;
 public class ApplicationViewTest {
 
 	public static void main(String[] args) {
-		ApplicationView appView = ApplicationView.create();
-
 		List<Entry<String, String>> optionslist = new ArrayList<>();
 		optionslist.add(new AbstractMap.SimpleEntry<>("ZERO", "Gerador 1"));
 		optionslist.add(new AbstractMap.SimpleEntry<>("UM", "Gerador 2"));
@@ -19,7 +17,7 @@ public class ApplicationViewTest {
 		optionslist.add(new AbstractMap.SimpleEntry<>("TRES", "Gerador 4"));
 		optionslist.add(new AbstractMap.SimpleEntry<>("QUATRO", "Gerador 5"));
 
-		appView.setSequenceGeneratorsOptionList(optionslist);
+		ApplicationView appView = ApplicationView.create(optionslist);
 		appView.setVisible(true);
 
 	}

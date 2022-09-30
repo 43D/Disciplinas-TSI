@@ -7,6 +7,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -14,12 +16,14 @@ import java.util.Map.Entry;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 
+import app.control.IControl;
 import app.view.components.scrollableOptionList.ScrollableOptionListBuilder;
 import app.view.components.validatedTextField.ValidatedTextField;
 import app.view.components.validators.IntegerRangeValidator;
@@ -49,18 +53,34 @@ public class ApplicationView {
 		sequenceTextArea.append(" ...");
 	}
 
+	public void setControl(IControl control) {
+		generateSequenceButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent actionEvent) {
+				int max = 0;
+				try {
+					max = Integer.parseInt(sequenceLimitTextField.getText());
+					control.generateSequence(sequenceName, max);
+				} catch (NumberFormatException nfe) {
+					final String msg = "Erro" + nfe.getMessage();
+					final String title = "ERRO AO DETERMINAR MAX SEQUENCIA";
+					JOptionPane.showMessageDialog(frame, msg, title, JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
+	}
+
 	static JScrollPane createSequenceOptionList(ApplicationView appView,
 			List<Map.Entry<String, String>> sequenceOptionsList) {
 		if (sequenceOptionsList == null)
 			throw new NullPointerException("Parâmento 'sequenceOptionsList' não pode ser nulo");
 
-		ScrollableOptionListBuilder builder = new ScrollableOptionListBuilder()
-				.optionList(sequenceOptionsList)
+		ScrollableOptionListBuilder builder = new ScrollableOptionListBuilder().optionList(sequenceOptionsList)
 				.actionListener((actionEvent) -> appView.sequenceName = actionEvent.getActionCommand());
 
 		return builder.build();
 	}
-	
+
 	static public ApplicationView create(List<Entry<String, String>> optionslist) {
 		final ApplicationView appView = new ApplicationView();
 
@@ -71,7 +91,7 @@ public class ApplicationView {
 		appView.generateSequenceButton = new JButton("Gerar a sequ�ncia");
 
 		appView.frame = createFrame(appView);
-		
+
 		JScrollPane pane = createSequenceOptionList(appView, optionslist);
 		appView.frame.getContentPane().add(pane, BorderLayout.WEST);
 

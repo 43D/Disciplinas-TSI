@@ -1,6 +1,6 @@
 package app.view;
 
-public interface AplicationView 
+public interface IApplicationView 
 {
 
 }

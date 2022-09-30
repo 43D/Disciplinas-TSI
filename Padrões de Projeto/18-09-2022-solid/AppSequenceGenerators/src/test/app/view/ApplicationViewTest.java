@@ -4,7 +4,6 @@ import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
-
 import app.view.ApplicationView;
 
 public class ApplicationViewTest {
@@ -18,6 +17,7 @@ public class ApplicationViewTest {
 		optionslist.add(new AbstractMap.SimpleEntry<>("QUATRO", "Gerador 5"));
 
 		ApplicationView appView = ApplicationView.create(optionslist);
+		appView.setControl((sequenceId, max) -> System.out.println("controlMock invocado"));
 		appView.setVisible(true);
 
 	}

@@ -24,6 +24,7 @@ import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 
 import app.control.IControl;
+import app.model.IModel;
 import app.view.components.scrollableOptionList.ScrollableOptionListBuilder;
 import app.view.components.validatedTextField.ValidatedTextField;
 import app.view.components.validators.IntegerRangeValidator;
@@ -69,6 +70,17 @@ public class ApplicationView {
 			}
 		});
 	}
+	
+	public void setModel(IModel model) {
+		if(model == null)
+			throw new IllegalArgumentException("Parâmentro 'model' não pode ser nulo");
+		
+		model.getObserverManager().addObserver((observable, state) ->{
+				sequenceNameLabel.setText(state.sequenceName);
+				setSequence(state.sequence);
+		});
+	}
+	
 
 	static JScrollPane createSequenceOptionList(ApplicationView appView,
 			List<Map.Entry<String, String>> sequenceOptionsList) {

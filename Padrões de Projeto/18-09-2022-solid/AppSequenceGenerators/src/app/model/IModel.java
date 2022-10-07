@@ -1,6 +1,6 @@
 package app.model;
 
-import app.util.Observable;
+import util.observable.Observable;
 
 public interface IModel extends Observable<ModelState>{
 	public ModelState getState();

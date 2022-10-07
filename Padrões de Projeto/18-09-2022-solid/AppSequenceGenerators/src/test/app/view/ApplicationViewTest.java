@@ -1,6 +1,5 @@
 package test.app.view;
 
-import java.lang.reflect.Array;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,10 +8,10 @@ import java.util.Map.Entry;
 
 import app.model.IModel;
 import app.model.ModelState;
-import app.util.Observable;
-import app.util.Observer;
-import app.util.ObserverManager;
 import app.view.ApplicationView;
+import util.observable.Observable;
+import util.observable.Observer;
+import util.observable.ObserverManager;
 
 public class ApplicationViewTest {
 
@@ -32,7 +31,7 @@ public class ApplicationViewTest {
 		@Override
 		public void setState(ModelState state) {
 			this.modelstate = state;
-			this.notifyObserver(state);
+			this.notifyObservers(state);
 			
 		}
 
@@ -49,15 +48,15 @@ public class ApplicationViewTest {
 		}
 
 		@Override
-		public void removeAllObserver() {
+		public void removeAllObservers() {
 			// TODO Auto-generated method stub
 			
 		}
 
 		@Override
-		public void notifyObserver(ModelState state) {
+		public void notifyObservers(ModelState state) {
 			for(Observer<ModelState> observer: observers)
-				observer.stateChange((Observable<ModelState>)this, state);
+				observer.stateChanged((Observable<ModelState>)this, state);
 			
 		}
 

@@ -14,55 +14,51 @@ import util.observable.Observer;
 import util.observable.ObserverManager;
 
 public class ApplicationViewTest {
+	
+		static class ModelMock implements IModel, Observable<ModelState>, ObserverManager<ModelState> {
+		private ModelState modelState = new ModelState("", new ArrayList<>());
 
-	static class ModelMock implements IModel, ObserverManager<ModelState>, Observable<ModelState>{
-		private ModelState modelstate = new ModelState("", new ArrayList<>());
-		private List<Observer<ModelState>> observers = new ArrayList<>();
+		@Override
+		public void setState(ModelState state) {
+			this.modelState = state;
+			this.notifyObservers(state);
+		}
+
+		@Override
+		public ModelState getState() {
+			return modelState;
+		}
+
 		@Override
 		public ObserverManager<ModelState> getObserverManager() {
 			return this;
 		}
 
-		@Override
-		public ModelState getState() {
-			return modelstate;
-		}
-
-		@Override
-		public void setState(ModelState state) {
-			this.modelstate = state;
-			this.notifyObservers(state);
-			
-		}
+		private List<Observer<ModelState>> observers = new ArrayList<>();
 
 		@Override
 		public void addObserver(Observer<ModelState> observer) {
 			observers.add(observer);
-			
+		}
+
+		@Override
+		public void notifyObservers(ModelState newState) {
+			for (Observer<ModelState> observer : observers)
+				observer.stateChanged((Observable<ModelState>) this, newState);
 		}
 
 		@Override
 		public void removeObserver(Observer<ModelState> observer) {
-			// TODO Auto-generated method stub
-			
 		}
 
 		@Override
 		public void removeAllObservers() {
-			// TODO Auto-generated method stub
-			
 		}
-
-		@Override
-		public void notifyObservers(ModelState state) {
-			for(Observer<ModelState> observer: observers)
-				observer.stateChanged((Observable<ModelState>)this, state);
-			
-		}
-
 	}
-	
+
 	public static void main(String[] args) {
+		
+		
 		List<Entry<String, String>> optionslist = new ArrayList<>();
 		optionslist.add(new AbstractMap.SimpleEntry<>("ZERO", "Gerador 1"));
 		optionslist.add(new AbstractMap.SimpleEntry<>("UM", "Gerador 2"));
@@ -71,12 +67,12 @@ public class ApplicationViewTest {
 		optionslist.add(new AbstractMap.SimpleEntry<>("QUATRO", "Gerador 5"));
 
 		ApplicationView appView = ApplicationView.create(optionslist);
-		ModelMock modelMock = new ModelMock(); 
+		ModelMock modelMock = new ModelMock();
 		appView.setModel(modelMock);
 		appView.setControl((sequenceId, max) -> System.out.println("controlMock invocado"));
 		appView.setVisible(true);
-		
-		modelMock.setState(new ModelState("Fibonacci", Arrays.asList(1,1,2,3,5,8)));
+
+		modelMock.setState(new ModelState("Fibonacci", Arrays.asList(1, 1, 2, 3, 5, 8)));
 
 	}
 

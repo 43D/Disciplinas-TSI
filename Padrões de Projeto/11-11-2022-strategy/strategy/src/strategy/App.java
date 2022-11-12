@@ -1,7 +1,10 @@
 package strategy;
 
+import java.time.Year;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class App {
 	private final Stock<Car> carStock;
@@ -12,21 +15,58 @@ public class App {
 	}
 
 	// ---------------------------------------------------
-	public void printAllCars() {
+	public final void printAllCars() {
 		carStock.stream().forEach(System.out::println);
 	}
 
 	public final void printAllCarsOrderedByYear() {
-		carStock.stream().sorted((carA, carB) -> (carA.getYear() - carB.getYear())).forEach(System.out::println);
+		carStock.stream().sorted(((carA, carB) -> (carA.getYear() - carB.getYear()))).forEach(System.out::println);
 	}
 
 	public final void printAllCarsOrderedByBrand() {
-		carStock.stream().sorted((carA, carB) -> (carA.getBrand().compareToIgnoreCase(carB.getBrand())))
+		carStock.stream().sorted(((carA, carB) -> (carA.getBrand().compareToIgnoreCase(carB.getBrand()))))
 				.forEach(System.out::println);
 	}
 
 	public final void printAllCarsOrderedByLicence() {
-		carStock.stream().sorted((carA, carB) -> (carA.getLicence().compareToIgnoreCase(carB.getLicence())))
+		carStock.stream().sorted(((carA, carB) -> (carA.getLicence().compareToIgnoreCase(carB.getLicence()))))
+				.forEach(System.out::println);
+	}
+
+	public final void printAllCarsOrdered(Comparator<? super Car> comparator) {
+		carStock.stream().sorted(comparator).forEach(System.out::println);
+	}
+
+	// ---------------------------------------------------
+
+	public final void printAllCarsByFilter(Predicate<? super Car> predicate) {
+		carStock.stream().filter(predicate).forEach(System.out::println);
+	}
+
+	public final void printAllCarsByBrand(String brand) {
+		carStock.stream().filter((car -> brand.equalsIgnoreCase(car.getBrand()))).forEach(System.out::println);
+	}
+
+	public final void printAllCarsByYear(int year) {
+		carStock.stream().filter((car -> (year == car.getYear()))).forEach(System.out::println);
+	}
+
+	public final void printAllCarsByLicence(String licence) {
+		carStock.stream().filter((car -> licence.equalsIgnoreCase(car.getLicence()))).forEach(System.out::println);
+	}
+
+	public final void printAllOldCars(int yearsOld) {
+		carStock.stream().filter((car -> (yearsOld <= (Year.now().getValue() - car.getYear()))))
+				.forEach(System.out::println);
+	}
+
+	public final void printAllOldCarsOrderedByYear(int yearsOld) {
+		carStock.stream().filter((car -> (yearsOld <= (Year.now().getValue() - car.getYear()))))
+				.sorted(((carA, carB) -> (carA.getYear() - carB.getYear()))).forEach(System.out::println);
+	}
+
+	public final void printAllNewerCars(int year) {
+		carStock.stream().filter((car -> (year >= (Year.now().getValue() - car.getYear()))))
 				.forEach(System.out::println);
 	}
 
@@ -34,7 +74,8 @@ public class App {
 	static public void main(String[] args) {
 		Stock<Car> stock = new CarStock(carList);
 		App app = new App(stock);
-		app.printAllCarsOrderedByYear();
+
+		app.printAllOldCarsOrderedByYear(15);
 	}
 
 	// --------------------------------------------------------------------------------------------------------------------//

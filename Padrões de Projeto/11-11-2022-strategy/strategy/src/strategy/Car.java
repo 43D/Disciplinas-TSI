@@ -67,15 +67,15 @@ public class Car implements Comparable<Car>{
 		StringBuilder sb = new StringBuilder();
 
 		sb.append("{ licence: ");
-		sb.append(this.licence);
+		sb.append(String.format("%-7s", this.licence));
 		sb.append(", name: ");
-		sb.append(this.name);
+		sb.append(String.format("%-10s",this.name));
 		sb.append(", brand: ");
-		sb.append(this.brand);
+		sb.append(String.format("%-12s",this.brand));
 		sb.append(", year: ");
-		sb.append(this.year);
+		sb.append(String.format("%-5s",this.year));
 		sb.append(", color: ");
-		sb.append(this.color);
+		sb.append(String.format("%-9s",this.color));
 		sb.append("}");
 
 		return sb.toString();

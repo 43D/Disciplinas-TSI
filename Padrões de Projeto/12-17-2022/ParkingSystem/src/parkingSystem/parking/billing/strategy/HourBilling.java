@@ -22,7 +22,7 @@ public class HourBilling extends AbstractBilling {
 		billBuilder
 			.parkingEntry(parkingEntry)
 			.parkingExit(parkingExit)
-			.appendDescriptio("Fisrt hour", getFirstHourTax());
+			.appendDescriptionItem("Fisrt hour", getFirstHourTax());
 
 		long minutes = Duration.between(parkingEntry, parkingExit).toMinutes();
 		long hour = minutes / 60;
@@ -31,7 +31,7 @@ public class HourBilling extends AbstractBilling {
 		if (additionalTime > 0) {
 			float additionalValue = additionalTime * getAdditionalHourTax();
 			String description = String.format("Additional %d hous", additionalTime);
-			billBuilder.appendDescriptio(description, additionalValue);
+			billBuilder.appendDescriptionItem(description, additionalValue);
 		}
 
 		return billBuilder.build();

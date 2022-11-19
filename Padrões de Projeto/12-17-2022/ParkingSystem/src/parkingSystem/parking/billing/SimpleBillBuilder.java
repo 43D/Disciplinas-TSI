@@ -22,7 +22,7 @@ public class SimpleBillBuilder {
 		return this;
 	}
 
-	public SimpleBillBuilder appendDescriptio(String description, float value) {
+	public SimpleBillBuilder appendDescriptionItem(String description, float value) {
 		descriptionList.add(new SimpleEntry<String, Float>(description, value));
 		return this;
 	}

@@ -1,10 +1,8 @@
 package parkingSystem.parking.billing.strategy;
 
-import java.time.Duration;
 import java.time.LocalDateTime;
 
 import parkingSystem.parking.billing.Bill;
-import parkingSystem.parking.billing.SimpleBillBuilder;
 
 public abstract class AbstractBilling implements BillCalculator {
 

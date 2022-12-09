@@ -17,11 +17,11 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.junit.jupiter.api.TestMethodOrder;
 
+import parkingSystem.common.repository.Entity;
+import parkingSystem.common.repository.JpaRepository;
 import parkingSystem.parking.billing.BillingType;
 import parkingSystem.parking.model.CheckIn;
 import parkingSystem.parking.model.CheckInBuilder;
-import parkingSystem.parking.repository.Entity;
-import parkingSystem.parking.repository.JpaRepository;
 
 @TestInstance(Lifecycle.PER_CLASS)
 @TestMethodOrder(OrderAnnotation.class)

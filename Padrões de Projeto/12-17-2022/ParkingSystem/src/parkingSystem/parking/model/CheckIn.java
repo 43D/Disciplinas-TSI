@@ -3,10 +3,10 @@ package parkingSystem.parking.model;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import parkingSystem.common.repository.Entity;
 import parkingSystem.parking.billing.BillingType;
-import parkingSystem.parking.repository.Entity;
 
-public class CheckIn implements Cloneable
+public class CheckIn implements Entity<CheckIn, Long>
 {
 	private Long id = null;
 	private String license = null;
@@ -17,16 +17,6 @@ public class CheckIn implements Cloneable
 	private BillingType billingType = null;
 	
 	//------------------------------------------------
-	@Override
-	public CheckIn clone() {
-		try {
-			return (CheckIn) super.clone();
-		}catch(CloneNotSupportedException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-	
 	public final
 	void setId(Long id)
     {
@@ -124,7 +114,22 @@ public class CheckIn implements Cloneable
         this.billingType = billingType;
     }
     
-  //------------------------------------------------
+    //------------------------------------------------
+    @Override
+    public CheckIn clone()
+    {
+    	try
+		{
+			return (CheckIn) super.clone();
+		}
+		catch( CloneNotSupportedException e )
+		{
+			e.printStackTrace();
+		}
+		return null;
+    }
+    
+    //------------------------------------------------
     @Override
     public String toString()
     {

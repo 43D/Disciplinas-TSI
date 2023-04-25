@@ -12,4 +12,7 @@ public abstract class AbstractMorseCodec
 	{
 		this.map = map;
 	}
+
+    public AbstractMorseCodec() {
+    }
 }

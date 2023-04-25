@@ -6,10 +6,13 @@ import morse.codec.MorseDecoder;
 public class Decoder extends AbstractMorseCodec
 implements MorseDecoder
 {	
+	private MorseDecodeMap map;
+
 	//----------------------------------------------------------------------
-	public Decoder(final MorseCodecMap map)
+	public Decoder(final MorseDecodeMap map)
 	{
-		super(map);
+		super();
+		this.map = map;
 	}
 
 	//----------------------------------------------------------------------

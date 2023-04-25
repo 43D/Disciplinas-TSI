@@ -92,6 +92,7 @@ public class MorseCodecMap implements MorseEncodeMap, MorseDecodeMap {
 	public final String UNDERSTOOD = "...-.";
 
 	// ---------------------------------------------------------------------------
+	@Override
 	public String encode(char letter) throws Exception {
 		String value = encoderMap.get("" + letter);
 		if (value == null)
@@ -100,7 +101,7 @@ public class MorseCodecMap implements MorseEncodeMap, MorseDecodeMap {
 		return value;
 	}
 
-	// ---------------------------------------------------------------------------
+	@Override
 	public String decode(String morseCode) throws Exception {
 		String value = decoderMap.get(morseCode);
 		if (value == null)

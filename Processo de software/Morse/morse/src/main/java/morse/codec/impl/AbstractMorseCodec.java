@@ -4,15 +4,10 @@ public abstract class AbstractMorseCodec
 {
 	public final char MORSE_SEPARATOR = ',';
 	public final char SPACE = '/';
-	
-	protected final MorseCodecMap map;
+	public final char INVALID_CHAR = '?';
 	
 	//-----------------------------------------------------
-	protected AbstractMorseCodec(final MorseCodecMap map)
+	protected AbstractMorseCodec()
 	{
-		this.map = map;
 	}
-
-    public AbstractMorseCodec() {
-    }
 }

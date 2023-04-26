@@ -13,20 +13,34 @@ public class Encoder extends AbstractMorseCodec
 		this.map = map;
 	}
 
+	private String encodeLine(String line) {
+		StringBuffer sb = new StringBuffer();
+		for (int i = 0; i < line.length(); i++) {
+			char letter = line.charAt(i);
+			try {
+				sb.append(map.encode(letter));
+			} catch (Exception e) {
+				sb.append((letter == SPACE) ? SPACE : UNKNOWN);
+			}
+			if (i != line.length() - 1)
+				sb.append(MORSE_SEPARATOR);
+		}
+		return sb.toString();
+	}
+
 	// ----------------------------------------------------------------------
 	@Override
 	public String encode(String text) {
+		if (text == null || "".equals(text))
+			return "";
 		String encodeText = "";
-		text = text.replaceAll(" ", String.valueOf(SPACE));
+		text = text.toLowerCase();
 
-		for (int i = 0; i < text.length(); i++) {
-			char letter = text.charAt(i);
-			try {
-				encodeText += map.encode(letter);
-			} catch (Exception e) {
-				encodeText += INVALID_CHAR;
-			}
-			encodeText+= MORSE_SEPARATOR;
+		String[] lines = text.split("\n");
+		for (String line : lines) {
+			encodeText += encodeLine(line);
+			if (lines.length > 1)
+				encodeText += "\n";
 		}
 
 		return encodeText;

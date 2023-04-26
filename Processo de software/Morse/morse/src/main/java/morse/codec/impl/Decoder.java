@@ -23,7 +23,7 @@ public class Decoder extends AbstractMorseCodec
 			try {
 				decodeText += map.decode(morse);
 			} catch (Exception e) {
-				decodeText += INVALID_CHAR;
+				decodeText += UNKNOWN;
 			}
 
 		decodeText = decodeText.replaceAll(String.valueOf(SPACE), " ");

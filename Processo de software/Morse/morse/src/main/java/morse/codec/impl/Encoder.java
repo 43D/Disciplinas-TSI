@@ -13,35 +13,45 @@ public class Encoder extends AbstractMorseCodec
 		this.map = map;
 	}
 
+	// ----------------------------------------------------------------------
 	private String encodeLine(String line) {
-		StringBuffer sb = new StringBuffer();
+		StringBuffer sbLine = new StringBuffer();
 		for (int i = 0; i < line.length(); i++) {
 			char letter = line.charAt(i);
 			try {
-				sb.append(map.encode(letter));
+				sbLine.append(map.encode(letter));
 			} catch (Exception e) {
-				sb.append((letter == SPACE) ? SPACE : UNKNOWN);
+				sbLine.append((letter == SPACE) ? SPACE : UNKNOWN);
 			}
-			if (i != line.length() - 1)
-				sb.append(MORSE_SEPARATOR);
+			sbLine.append(MORSE_SEPARATOR);
 		}
-		return sb.toString();
+
+		return removeLastCharOf(sbLine.toString());
+	}
+
+	// ----------------------------------------------------------------------
+	private String encodeText(String text) {
+		text = text.toLowerCase();
+		StringBuffer sbEncodeText = new StringBuffer();
+		String[] lines = text.split(BREAK_LINE);
+
+		for (String line : lines) {
+			sbEncodeText.append(encodeLine(line));
+			sbEncodeText.append(BREAK_LINE);
+		}
+
+		String encodeText = removeLastCharOf(sbEncodeText.toString());
+
+		return encodeText;
 	}
 
 	// ----------------------------------------------------------------------
 	@Override
 	public String encode(String text) {
-		if (text == null || "".equals(text))
-			return "";
-		String encodeText = "";
-		text = text.toLowerCase();
+		if (text == null || EMPTY_STRING.equals(text))
+			return EMPTY_STRING;
 
-		String[] lines = text.split("\n");
-		for (String line : lines) {
-			encodeText += encodeLine(line);
-			if (lines.length > 1)
-				encodeText += "\n";
-		}
+		String encodeText = encodeText(text);
 
 		return encodeText;
 	}

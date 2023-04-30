@@ -23,6 +23,8 @@ public class EncoderTest {
 
         assertEquals(expected, obtained);
     }
+
+	// ----------------------------------------------------------------------
     @Test
     void shouldReturnTheCorrectMorseCode(){
         MorseEncoder encode = new Encoder(MorseCodecMap.getInstance());
@@ -39,6 +41,8 @@ public class EncoderTest {
 
         assertEquals(expected, obtained);
     }
+
+	// ----------------------------------------------------------------------
     @Test
     void shouldReturnQuestionMarkForUnknownLetters(){
         MorseEncoder encode = new Encoder(MorseCodecMap.getInstance());
@@ -50,6 +54,7 @@ public class EncoderTest {
         assertEquals(expected, obtained);
     }
 
+	// ----------------------------------------------------------------------
     @Test
     void shouldReturnTheCorrectCodedWord(){
         MorseEncoder encode = new Encoder(MorseCodecMap.getInstance());
@@ -73,6 +78,7 @@ public class EncoderTest {
         assertEquals(expected, obtained);
     }
 
+	// ----------------------------------------------------------------------
     @Test
     void shouldReturnTheCorrectCodedText(){
         MorseEncoder encode = new Encoder(MorseCodecMap.getInstance());
